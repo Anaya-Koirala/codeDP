@@ -10,16 +10,38 @@ from PySide6.QtCore import QRegularExpression, Qt
 import ibdp_classes as ib
 
 
-
-
 class BasicSyntaxHighlighter(QSyntaxHighlighter):
     def __init__(self, parent=None):
         super(BasicSyntaxHighlighter, self).__init__(parent)
-        
-        keywords_control_flow = ["if", "else", "else if", "end", "while", "loop", "to", "until", "then"]
-        keywords_data_structures = ["Collection", "Array", "Stack", "Queue", "isEmpty()", "hasNext()", "resetNext()", "getNext()", "addItem", "push", "pop", "dequeue", "enqueue"]
+
+        keywords_control_flow = [
+            "if",
+            "else",
+            "else if",
+            "end",
+            "while",
+            "loop",
+            "to",
+            "until",
+            "then",
+        ]
+        keywords_data_structures = [
+            "Collection",
+            "Array",
+            "Stack",
+            "Queue",
+            "isEmpty()",
+            "hasNext()",
+            "resetNext()",
+            "getNext()",
+            "addItem",
+            "push",
+            "pop",
+            "dequeue",
+            "enqueue",
+        ]
         keywords_boolean_logic = ["true", "false", "not"]
-        keywords_comparison = ["<", "=", ">", "//","!"]
+        keywords_comparison = ["<", "=", ">", "//", "!"]
         keywords_procedures = ["procedure", "end procedure", "function", "end function"]
         keywords_io = ["new", "output", "input"]
 
@@ -49,25 +71,32 @@ class BasicSyntaxHighlighter(QSyntaxHighlighter):
         io_format.setFontWeight(QFont.Normal)
 
         # Create highlightingRules array
-        self.highlightingRules = [
-            (QRegularExpression(r'\b' + keyword + r'\b'), control_flow_format)
-            for keyword in keywords_control_flow
-        ] + [
-            (QRegularExpression(r'\b' + keyword + r'\b'), data_structures_format)
-            for keyword in keywords_data_structures
-        ] + [
-            (QRegularExpression(r'\b' + keyword + r'\b'), boolean_logic_format)
-            for keyword in keywords_boolean_logic
-        ] + [
-            (QRegularExpression(r'\b'+ keyword + r'\b'), comparison_format)
-            for keyword in keywords_comparison
-        ] + [
-            (QRegularExpression(r'\b' + keyword + r'\b'), procedures_format)
-            for keyword in keywords_procedures
-        ] + [
-            (QRegularExpression(r'\b' + keyword + r'\b'), io_format)
-            for keyword in keywords_io
-        ]
+        self.highlightingRules = (
+            [
+                (QRegularExpression(r"\b" + keyword + r"\b"), control_flow_format)
+                for keyword in keywords_control_flow
+            ]
+            + [
+                (QRegularExpression(r"\b" + keyword + r"\b"), data_structures_format)
+                for keyword in keywords_data_structures
+            ]
+            + [
+                (QRegularExpression(r"\b" + keyword + r"\b"), boolean_logic_format)
+                for keyword in keywords_boolean_logic
+            ]
+            + [
+                (QRegularExpression(r"\b" + keyword + r"\b"), comparison_format)
+                for keyword in keywords_comparison
+            ]
+            + [
+                (QRegularExpression(r"\b" + keyword + r"\b"), procedures_format)
+                for keyword in keywords_procedures
+            ]
+            + [
+                (QRegularExpression(r"\b" + keyword + r"\b"), io_format)
+                for keyword in keywords_io
+            ]
+        )
 
     def highlightBlock(self, text):
         for pattern, format in self.highlightingRules:
