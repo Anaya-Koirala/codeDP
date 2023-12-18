@@ -48,6 +48,7 @@ To install the required dependencies install the following libraries in a virtua
 
 ```bash
 pip install PySide6 ibdp_classes
+```
 
 ## Todo
 
