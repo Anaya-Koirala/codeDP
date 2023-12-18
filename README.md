@@ -51,7 +51,7 @@ pip install PySide6 ibdp_classes
 ```
 
 ## Todo
-
+- ### FIX THE CODE EXECUTION TERMINAL INSTANCE (ASAP HIGH PRIORITY)
 - Fix the UI and Colours (ugly)
 - Proper Testing
 - Proper Installer
