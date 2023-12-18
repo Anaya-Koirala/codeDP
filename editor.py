@@ -70,7 +70,6 @@ class BasicSyntaxHighlighter(QSyntaxHighlighter):
         io_format.setForeground(Qt.red)
         io_format.setFontWeight(QFont.Normal)
 
-        # Create highlightingRules array
         self.highlightingRules = (
             [
                 (QRegularExpression(r"\b" + keyword + r"\b"), control_flow_format)
@@ -167,8 +166,7 @@ class Ui_MainWindow(object):
         self.actionSave_AS.triggered.connect(self.save_file_as)
         self.actionOpen.triggered.connect(self.open_file)
         self.actionExecute.triggered.connect(self.execute_code)
-
-        # Create an instance of BasicSyntaxHighlighter and associate it with the textEdit
+        
         self.highlighter = BasicSyntaxHighlighter(self.textEdit.document())
 
         self.retranslateUi(MainWindow)
@@ -200,22 +198,22 @@ class Ui_MainWindow(object):
             file_name = os.path.splitext(os.path.basename(file_path))[
                 0
             ]  # Extract filename without extension
-            file_path = f"{file_name}.ib.bas"  # Append .ib.bas extension
+            file_path = f"{file_name}.ib.bas"
 
         with open(file_path, "w") as file:
             file.write(self.textEdit.toPlainText())
-        self.file_path = file_path  # Update the current file path
+        self.file_path = file_path
 
     def save_file_as(self):
         file_path, _ = QFileDialog.getSaveFileName(None, "Save File As", "", "*.ib.bas")
         if file_path:
             file_name = os.path.splitext(os.path.basename(file_path))[
                 0
-            ]  # Extract filename without extension
-            file_path = f"{file_name}.ib.bas"  # Append .ib.bas extension
+            ]
+            file_path = f"{file_name}.ib.bas"
             with open(file_path, "w") as file:
                 file.write(self.textEdit.toPlainText())
-            self.file_path = file_path  # Update the current file path
+            self.file_path = file_path
 
     def open_file(self):
         file_path, _ = QFileDialog.getOpenFileName(None, "Open File", "", "*.ib.bas")
@@ -226,9 +224,6 @@ class Ui_MainWindow(object):
                 self.textEdit.setPlainText(content)
 
     def execute_code(self):
-        """
-        Run the saved code in a new Python terminal
-        """
         code = self.textEdit.toPlainText()
         try:
             file_name = ".temp.ib.bas"
