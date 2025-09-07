@@ -1,6 +1,6 @@
-output "Input a greeting."
-input GREETING
-output GREETING, "to you too!"
+output "Input a name."
+input NAME
+output "Hello ", NAME, " nice to meet you!\n\n"
 
 output "Input an integer."
 input COUNT as int
@@ -11,9 +11,9 @@ else
     output COUNT, "is odd..."
 end if
 
-output "Input a float."
-input NUMBER as float
+output "Enter an integer: "
+input INTEGER as int
 
 loop I from 0 to 10
-    output I * NUMBER / 10
+	output I , " x 10 = " , I * 10
 end loop

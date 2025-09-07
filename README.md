@@ -2,6 +2,20 @@
 
 A basic pseudocode editor developed using ibdp_classes and PySide6.
 
+### Screenshots
+<p align="center">
+  <img src="media/ss1.png" alt="Screenshot 1" width="400"/>
+  <img src="media/ss2.png" alt="Screenshot 2" width="400"/>
+  <img src="media/ss3.png" alt="Screenshot 3" width="400"/>
+</p>
+
+### Demo
+<p align="center">
+  <img src="media/recording.gif" alt="Recording Demo" width="500"/>
+</p>
+
+
+
 ## Usage
 
 1. **Run the Application**:
